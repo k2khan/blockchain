@@ -3,7 +3,6 @@
 #include <iomanip>
 #include <openssl/sha.h>
 
-// Constructor to initialize a Block with given transactions, previous hash, and difficulty level
 Block::Block(std::vector<Transaction> transactions, std::string prevHash, int difficulty) {
     this->prevHash = prevHash;
     this->blockHash = mineBlock(); // Compute the block's hash
@@ -13,8 +12,6 @@ Block::Block(std::vector<Transaction> transactions, std::string prevHash, int di
     this->difficulty = difficulty;
 }
 
-
-// Mining function to find a valid hash for the block based on the given difficulty
 std::string Block::mineBlock() {
     std::string target(difficulty, '0');
     while (blockHash.substr(0, difficulty) != target) {
@@ -24,7 +21,6 @@ std::string Block::mineBlock() {
     return blockHash;
 }
 
-// Generate the hash of the block
 std::string Block::generateHash() const {
     std::stringstream ss;
     ss << std::put_time(std::gmtime(&timestamp), "%Y-%m-%dT%H:%M:%S");
@@ -35,7 +31,6 @@ std::string Block::generateHash() const {
     return sha256(ss.str());
 }
 
-// Compute SHA256 hash for a given string
 std::string Block::sha256(const std::string str) const {
     unsigned char hash[SHA256_DIGEST_LENGTH];
     SHA256_CTX sha256;

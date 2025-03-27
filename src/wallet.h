@@ -6,8 +6,8 @@
 
 class Wallet {
 public:
-    Wallet(std::string id); // Constructor with wallet id
-    ~Wallet(); // Destructor to free RSA keys
+    Wallet(std::string id);
+    ~Wallet();
 
     Transaction sendFunds(Wallet& receiver, float amount);
 

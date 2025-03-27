@@ -4,14 +4,13 @@
 
 class Transaction {
 public:
-    std::string sender; // Sender's wallet id
-    std::string receiver; // Receiver's wallet id
-    float amount; // Amount of money transferred
-    std::string signature; // Digital signature for this transaction
-    int nonce; // Nonce for this transaction, can be used for security or versioning
-    unsigned int signatureLength; // Length of the digital signature
+    std::string sender;
+    std::string receiver;
+    float amount;
+    std::string signature;
+    int nonce;
+    unsigned int signatureLength;
 
-    // Constructor to initialize the transaction
     Transaction(std::string sender, std::string receiver, float amount, int nonce);
 
     void sign(RSA* privateKey);

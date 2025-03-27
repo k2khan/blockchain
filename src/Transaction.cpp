@@ -5,7 +5,6 @@
 #include <iostream>
 #include <iomanip>
 
-// Print the hash of a transaction
 void debugPrintHash(unsigned char* hash, size_t length) {
     for (size_t i = 0; i < length; i++) {
         std::cout << std::hex << std::setw(2) << std::setfill('0') << static_cast<int>(hash[i]);
@@ -13,11 +12,9 @@ void debugPrintHash(unsigned char* hash, size_t length) {
     std::cout << std::endl;
 }
 
-// Initialize a transaction
 Transaction::Transaction(std::string sender, std::string receiver, float amount, int nonce)
     : sender(sender), receiver(receiver), amount(amount), nonce(nonce) {}
 
-// Sign a transaction
 void Transaction::sign(RSA* privateKey) {
     std::string dataToSign = sender + receiver + std::to_string(amount) + std::to_string(nonce);
     unsigned char hash[SHA256_DIGEST_LENGTH];
@@ -38,7 +35,6 @@ void Transaction::sign(RSA* privateKey) {
     std::cout << "Signed successfully. Signature Length: " << signatureLength << '\n';
 }
 
-// Verify integrity of transaction
 bool Transaction::verify(RSA* publicKey) const {
     ERR_clear_error();
 

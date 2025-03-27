@@ -60,14 +60,14 @@ void Blockchain::printChain() {
             std::cout << "  Sender: " << tx.sender << " Receiver: " << tx.receiver << " Amount: " << tx.amount << std::endl;
         }
 
-        std::cout << "Nonce: " << block.nonce << std::endl;  // Display the nonce
+        std::cout << "Nonce: " << block.nonce << std::endl;
         std::cout << std::endl;
     }
 }
 
 void Blockchain::notifyWallets(std::vector<Wallet*>& wallets) {
     for (auto& wallet : wallets) {
-        publicKeyMap[wallet->id] = wallet->publicKey;  // Store the public key in the map
+        publicKeyMap[wallet->id] = wallet->publicKey;
         for (auto& block : chain) {
             wallet->updateBalance(block.transactions);
         }
