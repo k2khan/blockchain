@@ -22,6 +22,7 @@ Wallet::~Wallet() {
 
 void Wallet::generateKeys() {
     privateKey = RSA_new();
+    publicKey = RSA_new();
     BIGNUM* exponent = BN_new();
     BN_set_word(exponent, RSA_F4);
     RSA_generate_key_ex(privateKey, 2048, exponent, nullptr);

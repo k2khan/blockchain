@@ -20,20 +20,21 @@ Transaction::Transaction(std::string sender, std::string receiver, float amount,
 // Sign a transaction
 void Transaction::sign(RSA* privateKey) {
     std::string dataToSign = sender + receiver + std::to_string(amount) + std::to_string(nonce);
-    unsigned char hash(SHA256_DIGEST_LENGTH);
+    unsigned char hash[SHA256_DIGEST_LENGTH];
     SHA256(reinterpret_cast<const unsigned char*>(dataToSign.c_str()), dataToSign.size(), hash);
 
-    unsigned char sign(RSA_size(privateKey));
+    unsigned char* sign_buffer = new unsigned char[RSA_size(privateKey)];
     unsigned int sLen;
 
-    if (RSA_sign(NID_sha256, hash, SHA256_DIGEST_LENGTH, sign, &sLen, privateKey) != 1) {
+    if (RSA_sign(NID_sha256, hash, SHA256_DIGEST_LENGTH, sign_buffer, &sLen, privateKey) != 1) {
         std::cout << "Signing failed.\n";
         return;
     }
 
-    signature.assign(reinterpret_cast<char*>(sign), sLen);
+    signature.assign(reinterpret_cast<char*>(sign_buffer), sLen);
     signatureLength = sLen;
     
+    delete[] sign_buffer;
     std::cout << "Signed successfully. Signature Length: " << signatureLength << '\n';
 }
 
