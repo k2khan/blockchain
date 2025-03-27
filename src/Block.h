@@ -23,4 +23,4 @@ public:
 
     // Utility method to perform SHA-256 hashing
     std::string sha256(const std::string str) const;
-}
+};

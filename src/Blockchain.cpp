@@ -3,7 +3,7 @@
 #include <iostream>
 
 Blockchain::Blockchain() {
-    std::vector<Transaction> emptyTransacations;
+    std::vector<Transaction> emptyTransactions;
     chain.emplace_back(emptyTransactions, "0", 2);
 }
 

@@ -37,7 +37,7 @@ std::string Block::generateHash() const {
 
 // Compute SHA256 hash for a given string
 std::string Block::sha256(const std::string str) const {
-    unsigned char hash(SHA256_DIGEST_LENGTH);
+    unsigned char hash[SHA256_DIGEST_LENGTH];
     SHA256_CTX sha256;
     SHA256_Init(&sha256);
     SHA256_Update(&sha256, str.c_str(), str.size());

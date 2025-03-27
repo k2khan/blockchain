@@ -1,12 +1,12 @@
 #pragma once
 #include <string>
 #include <vector>
-#include <opensll/rsa.h>
+#include <openssl/rsa.h>
 #include "Transaction.h"
 
 class Wallet {
 public:
-    Wallet(std::string id) // Constructor with wallet id
+    Wallet(std::string id); // Constructor with wallet id
     ~Wallet(); // Destructor to free RSA keys
 
     Transaction sendFunds(Wallet& receiver, float amount);

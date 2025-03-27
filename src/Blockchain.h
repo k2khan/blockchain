@@ -1,12 +1,13 @@
 #pragma once
 #include <vector>
+#include <unordered_map>
 #include "Block.h"
 #include "Transaction.h"
 #include "Wallet.h"
 
 class Blockchain {
 private:
-    std::vector<Block> chain: // Blockchain consisting of blocks
+    std::vector<Block> chain; // Blockchain consisting of blocks
     std::vector<Transaction> pendingTransactions; // Transactions waiting to be added to a block
     std::unordered_map<std::string, RSA*> publicKeyMap; // Map of wallet ids to their public keys
 

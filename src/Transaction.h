@@ -12,7 +12,7 @@ public:
     unsigned int signatureLength; // Length of the digital signature
 
     // Constructor to initialize the transaction
-    Transaction(std::string sender, std::string reeiver, float amount, int nonce);
+    Transaction(std::string sender, std::string receiver, float amount, int nonce);
 
     void sign(RSA* privateKey);
 
