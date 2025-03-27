@@ -8,7 +8,7 @@ class Blockchain {
 private:
     std::vector<Block> chain: // Blockchain consisting of blocks
     std::vector<Transaction> pendingTransactions; // Transactions waiting to be added to a block
-    std::unordered_map<std::string, RSA*> publicKeyMap; // Map of Ids to their public keys
+    std::unordered_map<std::string, RSA*> publicKeyMap; // Map of wallet ids to their public keys
 
 public:
     // Constructor to intialize blockchain with the genesis block

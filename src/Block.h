@@ -5,7 +5,7 @@
 #include "Transaction.h"
 
 class Block {
-public
+public:
     std::string prevHash; // Previous block's hash
     std::string blockHash; // Current block's hash
     std::vector<Transaction> transactions; // List of transactions in this block
