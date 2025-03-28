@@ -8,16 +8,16 @@ int main() {
     std::vector<Wallet*> wallets;
 
     Wallet hamad("Hamad");
-    Wallet humza("Humza");
+    Wallet bogdan("bogdan");
 
     hamad.balance = 100;
-    humza.balance = 100;
+    bogdan.balance = 100;
 
     wallets.push_back(&hamad);
-    wallets.push_back(&humza);
+    wallets.push_back(&bogdan);
 
-    Transaction tx1 = hamad.sendFunds(humza, 50);  
-    Transaction tx2 = humza.sendFunds(humza, 30); 
+    Transaction tx1 = hamad.sendFunds(bogdan, 50);  
+    Transaction tx2 = bogdan.sendFunds(bogdan, 30); 
 
     myBlockchain.createTransaction(tx1);
     myBlockchain.createTransaction(tx2);
@@ -27,9 +27,9 @@ int main() {
     myBlockchain.notifyWallets(wallets);
 
     if (myBlockchain.isChainValid()) {
-        std::cout << "Blockchain is valid.\n";
+        std::cout << "Blockchain is valid" << std::endl;
     } else {
-        std::cout << "Blockchain is not valid!\n";
+        std::cout << "Blockchain is not valid!" << std::endl;
     }
 
     myBlockchain.printChain();

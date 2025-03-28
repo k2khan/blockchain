@@ -5,11 +5,11 @@
 
 Block::Block(std::vector<Transaction> transactions, std::string prevHash, int difficulty) {
     this->prevHash = prevHash;
-    this->blockHash = mineBlock(); // Compute the block's hash
     this->transactions = transactions;
-    this->timestamp = std::time(nullptr);
-    this->nonce = 0;
     this->difficulty = difficulty;
+    this->nonce = 0;
+    this->timestamp = std::time(nullptr);
+    this->blockHash = mineBlock();
 }
 
 std::string Block::mineBlock() {

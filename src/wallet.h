@@ -10,9 +10,7 @@ public:
     ~Wallet();
 
     Transaction sendFunds(Wallet& receiver, float amount);
-
     void updateBalance(const std::vector<Transaction>& transactions);
-
     void printWalletData() const;
 
     std::string id;

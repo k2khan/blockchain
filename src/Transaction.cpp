@@ -32,7 +32,7 @@ void Transaction::sign(RSA* privateKey) {
     signatureLength = sLen;
     
     delete[] sign_buffer;
-    std::cout << "Signed successfully. Signature Length: " << signatureLength << '\n';
+    std::cout << "Signed successfully. Signature Length: " << signatureLength << std::endl;
 }
 
 bool Transaction::verify(RSA* publicKey) const {
