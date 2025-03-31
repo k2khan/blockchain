@@ -10,9 +10,6 @@ int main() {
     Wallet hamad("Hamad");
     Wallet bogdan("bogdan");
 
-    hamad.balance = 100;
-    bogdan.balance = 100;
-
     wallets.push_back(&hamad);
     wallets.push_back(&bogdan);
 

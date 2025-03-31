@@ -3,18 +3,18 @@
 #include <unordered_map>
 #include "Block.h"
 #include "Transaction.h"
-#include "Wallet.h"
 
 class Blockchain {
 private:
     std::vector<Block> chain;
     std::vector<Transaction> pendingTransactions;
     std::unordered_map<std::string, RSA*> publicKeyMap;
+    std::unordered_map<std::string, float> balances;
 
 public:
     Blockchain();
 
-    void createTransaction(Transaction transaction);
+    bool createTransaction(Transaction transaction);
 
     void minePendingTransactions();
 
@@ -26,5 +26,7 @@ public:
 
     void printChain();
 
-    void notifyWallets(std::vector<Wallet*>& wallets);
+    void updateBalanceFromBlock(const Block& block);
+
+    float getBalance(const std::string& address) const;
 };

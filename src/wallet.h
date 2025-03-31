@@ -15,6 +15,7 @@ public:
 
     std::string id;
     float balance;
+    int nonce;
     RSA* publicKey;
 
 private:

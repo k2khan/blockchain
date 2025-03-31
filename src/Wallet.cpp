@@ -3,7 +3,7 @@
 #include <openssl/rand.h>
 #include <openssl/pem.h>
 
-Wallet::Wallet(std::string id) : id(id), balance(0.0f), publicKey(nullptr), privateKey(nullptr) {
+Wallet::Wallet(std::string id) : id(id), balance(0.0f), nonce(0), publicKey(nullptr), privateKey(nullptr) {
     generateKeys();
 }
 
@@ -44,8 +44,7 @@ void Wallet::generateKeys() {
 }
 
 Transaction Wallet::sendFunds(Wallet& receiver, float amount) {
-    int nonce = 12345;
-
+    nonce++;
     Transaction tx(id, receiver.id, amount, nonce);
     tx.sign(privateKey);
     std::cout << privateKey << std::endl;
