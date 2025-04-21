@@ -1,5 +1,4 @@
-# simpleblock
-simple version of a blockchain
+# blockchain
 
 ```
 run "make" in the simpleblock directory to compile
